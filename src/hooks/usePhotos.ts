@@ -15,6 +15,9 @@ const usePhotos = (endPoint: string) => {
     apiClient
       .get<PhotoResponse[]>(endPoint, {
         signal: controller.signal,
+        params: {
+          per_page: 12,
+        },
       })
       .then((res) => {
         setLoading(false);

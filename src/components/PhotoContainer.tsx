@@ -7,7 +7,7 @@ interface Props {
 
 const PhotoContainer = ({ children }: Props) => {
   return (
-    <Box margin={2} borderRadius={10} overflow="hidden">
+    <Box marginY={8} marginX={2} borderRadius={10} overflow="hidden">
       {children}
     </Box>
   );

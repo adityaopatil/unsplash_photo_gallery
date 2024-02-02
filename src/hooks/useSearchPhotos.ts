@@ -37,6 +37,7 @@ const useSearchPhotos = (endPoint: string, searchQuery?: string) => {
         params: {
           query: searchQuery,
           page: 1,
+          per_page: 12,
         },
       })
       .then((res) => {

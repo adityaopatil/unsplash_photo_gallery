@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { SearchContext } from "./SearchContext";
+import SearchContext from "./SearchContext";
 
 interface Props {
   children: ReactNode;

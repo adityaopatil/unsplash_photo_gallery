@@ -3,10 +3,10 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import { useState } from "react";
-import SearchProvider from "./components/SearchProvider";
+import SearchProvider from "./components/context/SearchProvider";
 
 function App() {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   return (
     <>
