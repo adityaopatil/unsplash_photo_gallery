@@ -11,6 +11,7 @@ import {
 import PhotoContainer from "./PhotoContainer";
 import PhotoCard from "./PhotoCard";
 import usePhotos from "../hooks/usePhotos";
+import useSearchContext from "./useSearchContext";
 
 interface Props {
   searchText: string;
@@ -22,7 +23,8 @@ const useConditionalPhotos = (searchText: string) => {
     : useSearchPhotos("/search/photos", searchText);
 };
 
-const HomePage = ({ searchText }: Props) => {
+const HomePage = () => {
+  const { searchText } = useSearchContext();
   const { data, error, isLoading } = useConditionalPhotos(searchText);
 
   if (!data || data.length === 0) {

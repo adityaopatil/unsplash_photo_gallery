@@ -8,7 +8,7 @@ interface Props {
   onSearch: (searhText: string) => void;
 }
 
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   const { colorMode } = useColorMode();
   const logoSrc = colorMode === "dark" ? logo_white : logo_black;
 
@@ -16,7 +16,7 @@ const NavBar = ({ onSearch }: Props) => {
     <HStack padding="10px">
       <Image src={logoSrc} boxSize="50px" alt="Unsplash Logo" />
       <Box width={"100%"}>
-        <SearchInput onSearch={onSearch} />
+        <SearchInput />
       </Box>
       <ColorModeSwitch />
     </HStack>
