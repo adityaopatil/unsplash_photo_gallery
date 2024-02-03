@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export interface PhotoResponse {
   id: number;
@@ -23,51 +23,33 @@ interface FetchResponse {
   results: PhotoResponse[];
 }
 
-const useSearchPhotos = (endPoint: string, searchQuery?: string) =>
-  useQuery<PhotoResponse[], Error>({
-    queryKey: ["photos", searchQuery],
+const useSearchPhotos = (
+  endPoint: string,
+  searchQuery?: string,
+  currentPage?: number
+) => {
+  const queryClient = useQueryClient();
+
+  const { data, error, isLoading, refetch } = useQuery<PhotoResponse[], Error>({
+    queryKey: ["photos", searchQuery, currentPage],
     queryFn: () =>
       apiClient
         .get<FetchResponse>(endPoint, {
           params: {
             query: searchQuery,
+            page: currentPage || 1,
             per_page: 12,
           },
         })
         .then((res) => res.data.results),
+    staleTime: 1000 * 60, //1min
   });
 
-// const useSearchPhotos = (endPoint: string, searchQuery?: string) => {
-//   const [data, setData] = useState<PhotoResponse[]>([]);
-//   const [error, setError] = useState("");
-//   const [isLoading, setLoading] = useState(false);
+  const refetchPhotos = () => {
+    queryClient.invalidateQueries(["photos"]);
+  };
 
-//   useEffect(() => {
-//     const controller = new AbortController();
-
-//     setLoading(true);
-//     apiClient
-//       .get<FetchResponse>(endPoint, {
-//         signal: controller.signal,
-//         params: {
-//           query: searchQuery,
-//           page: 1,
-//           per_page: 12,
-//         },
-//       })
-//       .then((res) => {
-//         setLoading(false);
-//         setData(res.data.results);
-//       })
-//       .catch((err) => {
-//         if (err instanceof CanceledError) return;
-//         setError(err.message);
-//         setLoading(false);
-//       });
-//     return () => controller.abort();
-//   }, [searchQuery]);
-
-//   return { data, error, isLoading };
-// };
+  return { data, error, isLoading, refetch: refetchPhotos };
+};
 
 export default useSearchPhotos;
