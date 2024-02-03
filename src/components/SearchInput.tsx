@@ -9,7 +9,7 @@ interface Props {
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
-  4;
+
   const { setSearchText } = useSearchContext();
 
   return (

@@ -3,6 +3,7 @@ import logo_black from "../assets/unsplash_icon.svg";
 import logo_white from "../assets/unsplash_icon_white.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
 interface Props {
   onSearch: (searhText: string) => void;
@@ -14,7 +15,15 @@ const NavBar = () => {
 
   return (
     <HStack padding="10px">
-      <Image src={logoSrc} boxSize="50px" alt="Unsplash Logo" />
+      <Link to="/">
+        <Image
+          w="100%"
+          h="auto"
+          src={logoSrc}
+          boxSize="50px"
+          alt="Unsplash Logo"
+        />
+      </Link>
       <Box width={"100%"}>
         <SearchInput />
       </Box>
