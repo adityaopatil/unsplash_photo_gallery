@@ -16,7 +16,7 @@ const PhotoCard = ({ photo }: Props) => {
       borderColor="gray.200"
       boxShadow="md"
     >
-      <Link to={`/photos/${photo.id}`}>
+      <Link to={`${photo.id}`}>
         <Image
           w="100%"
           h="auto"

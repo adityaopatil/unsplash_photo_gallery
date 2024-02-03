@@ -8,9 +8,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/", element: <Navigate to="photos" /> },
-      { path: "photos", element: <HomePage /> },
-      { path: "photos/:id", element: <FullImagePage /> },
+      { index: true, element: <HomePage /> },
+      { path: ":id", element: <FullImagePage /> },
     ],
   },
 ]);
