@@ -1,7 +1,8 @@
 import { HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
-import useSearchContext from "./context/useSearchContext";
+import useSearchInput from "../store";
+import { Navigate, useNavigate } from "react-router-dom";
 
 interface Props {
   onSearch: (searhText: string) => void;
@@ -10,15 +11,19 @@ interface Props {
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
 
-  const { setSearchText } = useSearchContext();
+  const navigate = useNavigate();
+
+  const { setSearchInput } = useSearchInput();
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         if (ref.current) {
-          setSearchText(ref.current.value);
+          setSearchInput(ref.current.value);
         }
+
+        navigate("/");
       }}
     >
       <InputGroup>

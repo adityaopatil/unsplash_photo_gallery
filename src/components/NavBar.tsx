@@ -15,15 +15,17 @@ const NavBar = () => {
 
   return (
     <HStack padding="10px">
-      <Link to="/">
-        <Image
-          w="100%"
-          h="auto"
-          src={logoSrc}
-          boxSize="50px"
-          alt="Unsplash Logo"
-        />
-      </Link>
+      <Image
+        w="100%"
+        h="auto"
+        src={logoSrc}
+        boxSize="50px"
+        alt="Unsplash Logo"
+        onClick={() => {
+          window.location.href = "/";
+        }}
+        cursor="pointer"
+      />
       <Box width={"100%"}>
         <SearchInput />
       </Box>

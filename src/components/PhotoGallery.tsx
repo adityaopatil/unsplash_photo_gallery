@@ -11,7 +11,7 @@ import {
 import PhotoContainer from "./PhotoContainer";
 import PhotoCard from "./PhotoCard";
 import usePhotos from "../hooks/usePhotos";
-import useSearchContext from "./context/useSearchContext";
+import useSearchInput from "../store";
 
 interface Props {
   searchText: string;
@@ -24,8 +24,8 @@ const useConditionalPhotos = (searchText: string) => {
 };
 
 const PhotoGallery = () => {
-  const { searchText } = useSearchContext();
-  const { data, error, isLoading } = useConditionalPhotos(searchText);
+  const { searchInput } = useSearchInput();
+  const { data, error, isLoading } = useConditionalPhotos(searchInput);
 
   if (!data || data.length === 0) {
     return <Text fontSize="2xl">No Images Found</Text>;

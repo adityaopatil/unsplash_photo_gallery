@@ -5,6 +5,7 @@ import usePhoto from "../hooks/usePhoto";
 const FullImagePage = () => {
   const { id } = useParams();
   const { data, error, isLoading } = usePhoto(`/photos/${id}`);
+  console.log(data);
 
   if (isLoading) return <Spinner />;
 

@@ -6,19 +6,11 @@ import NavBar from "../components/NavBar";
 
 const HomePage = () => {
   return (
-    <SearchProvider>
-      <Grid
-        templateAreas={{ base: `"nav" "main"` }}
-        templateColumns={{ base: "1fr" }}
-      >
-        <GridItem area="nav">
-          <NavBar />
-        </GridItem>
-        <GridItem paddingX={4} area="main">
-          <PhotoGallery />
-        </GridItem>
-      </Grid>
-    </SearchProvider>
+    <Grid templateAreas={{ base: "main" }} templateColumns={{ base: "1fr" }}>
+      <GridItem paddingX={4} area="main">
+        <PhotoGallery />
+      </GridItem>
+    </Grid>
   );
 };
 
