@@ -8,6 +8,7 @@ const usePhoto = (endPoint: string) =>
   useQuery<PhotoResponse, Error>({
     queryKey: ["photo"],
     queryFn: () => apiClient.get(endPoint).then((res) => res.data),
+    staleTime: 1000 * 60 * 60 * 24, //24Hours
   });
 
 export default usePhoto;

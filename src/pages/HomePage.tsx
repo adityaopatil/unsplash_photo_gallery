@@ -6,8 +6,8 @@ import NavBar from "../components/NavBar";
 
 const HomePage = () => {
   return (
-    <Grid templateAreas={{ base: "main" }} templateColumns={{ base: "1fr" }}>
-      <GridItem paddingX={4} area="main">
+    <Grid templateColumns={{ base: "1fr" }}>
+      <GridItem paddingX={4}>
         <PhotoGallery />
       </GridItem>
     </Grid>
