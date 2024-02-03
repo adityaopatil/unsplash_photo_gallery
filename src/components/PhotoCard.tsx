@@ -16,11 +16,7 @@ const PhotoCard = ({ photo }: Props) => {
       borderColor="gray.200"
       boxShadow="md"
     >
-      <Link
-        to={`/photos/${photo.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link to={`/photos/${photo.id}`}>
         <Image
           w="100%"
           h="auto"
