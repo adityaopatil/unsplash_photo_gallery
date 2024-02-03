@@ -1,7 +1,7 @@
 import { Button, Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import HomePage from "./components/HomePage";
+import PhotoGallery from "./components/PhotoGallery";
 import { useState } from "react";
 import SearchProvider from "./components/context/SearchProvider";
 
@@ -23,7 +23,7 @@ function App() {
             <NavBar />
           </GridItem>
           <GridItem paddingX="10px" area="main">
-            <HomePage />
+            <PhotoGallery />
           </GridItem>
         </Grid>
       </SearchProvider>

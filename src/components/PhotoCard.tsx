@@ -1,6 +1,7 @@
 import React from "react";
 import { PhotoResponse } from "../hooks/useSearchPhotos";
 import { Card, CardBody, Image, Text, useColorMode } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface Props {
   photo: PhotoResponse;
@@ -15,7 +16,14 @@ const PhotoCard = ({ photo }: Props) => {
       borderColor="gray.200"
       boxShadow="md"
     >
-      <Image src={photo.urls.small} />
+      <Link to={`/photos/${photo.id}`}>
+        <Image
+          w="100%"
+          h="auto"
+          src={photo.urls?.small}
+          alt={photo.alt_description}
+        />
+      </Link>
       <CardBody>
         <Text>{photo.alt_description}</Text>
       </CardBody>

@@ -23,7 +23,7 @@ const useConditionalPhotos = (searchText: string) => {
     : useSearchPhotos("/search/photos", searchText);
 };
 
-const HomePage = () => {
+const PhotoGallery = () => {
   const { searchText } = useSearchContext();
   const { data, error, isLoading } = useConditionalPhotos(searchText);
 
@@ -48,4 +48,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default PhotoGallery;

@@ -6,7 +6,7 @@ export interface PhotoResponse {
   id: number;
   slug: string;
   alt_description: string;
-  urls: {
+  urls?: {
     full: string;
     raw: string;
     regular: string;
