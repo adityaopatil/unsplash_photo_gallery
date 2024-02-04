@@ -28,9 +28,7 @@ const useSearchPhotos = (
   searchQuery?: string,
   currentPage?: number
 ) => {
-  const queryClient = useQueryClient();
-
-  const { data, error, isLoading, refetch } = useQuery<PhotoResponse[], Error>({
+  return useQuery<PhotoResponse[], Error>({
     queryKey: ["photos", searchQuery, currentPage],
     queryFn: () =>
       apiClient
@@ -44,12 +42,6 @@ const useSearchPhotos = (
         .then((res) => res.data.results),
     staleTime: 1000 * 60, //1min
   });
-
-  const refetchPhotos = () => {
-    queryClient.invalidateQueries(["photos"]);
-  };
-
-  return { data, error, isLoading, refetch: refetchPhotos };
 };
 
 export default useSearchPhotos;

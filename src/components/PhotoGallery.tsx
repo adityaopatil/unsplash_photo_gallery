@@ -28,7 +28,7 @@ const useConditionalPhotos = (searchQuery: string, currentPage: number) => {
 const PhotoGallery = () => {
   const { searchInput } = useSearchInput();
   const [pageNumber, setPageNumber] = useState(1);
-  const { data, error, isLoading, refetch } = useConditionalPhotos(
+  const { data, error, isLoading } = useConditionalPhotos(
     searchInput,
     pageNumber
   );
@@ -48,7 +48,6 @@ const PhotoGallery = () => {
 
   const handleMore = () => {
     setPageNumber(pageNumber + 1);
-    refetch();
   };
 
   return (
