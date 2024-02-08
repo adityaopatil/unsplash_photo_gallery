@@ -23,7 +23,7 @@ const SearchInput = () => {
           setSearchInput(ref.current.value);
         }
 
-        navigate("/");
+        navigate("/", { replace: true });
       }}
     >
       <InputGroup>
